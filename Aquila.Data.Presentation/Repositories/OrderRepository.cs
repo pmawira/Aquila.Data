@@ -10,7 +10,7 @@ namespace Aquila.Data.Presentation.Repositories
     public class OrderRepository : IOrderRepository
     {
         private readonly Table _orders;
-        private readonly Table _users;
+        private readonly Table _customers;
         private readonly DatabaseEngine db;
         private readonly ICustomerRepository _repo;
         public OrderRepository(ICustomerRepository repo)
@@ -18,7 +18,7 @@ namespace Aquila.Data.Presentation.Repositories
             _repo = repo;
              db = AquilaDatabase.Instance;
             // Ensure Customers exists (FK target)
-            _users = db.TableExists("Customers")
+            _customers = db.TableExists("Customers")
                 ? db.Table("Customers")
                 : db.CreateTable(
                     name: "Customers",
@@ -37,7 +37,7 @@ namespace Aquila.Data.Presentation.Repositories
 
         public void Add(OrderViewModel order)
         {
-            if(!db.TableExists("Customer"))
+            if(!db.TableExists("Customers"))
                 throw new ConstraintViolationException("Customers does not exist");
 
             if(_repo.GetById(order.CustomerId) == null)
@@ -54,12 +54,12 @@ namespace Aquila.Data.Presentation.Repositories
 
         public IEnumerable<OrderViewModel> GetOrdersWithUsers()
         {
-            return JoinEngine.InnerJoin(_users, _orders, "Id", "CustomerId")
+            return JoinEngine.InnerJoin(_customers, _orders, "Id", "CustomerId")
                 .Select(r => new OrderViewModel
                 {
                     Id = (int)r["Orders.Id"],
                     CustomerId = (int)r["Orders.CustomerId"],
-                    CustomerName = r["Cusomers.Name"].ToString()!,
+                    CustomerName = r["Customers.Name"].ToString()!,
                     Amount = (decimal)r["Orders.Amount"]
                 });
         }

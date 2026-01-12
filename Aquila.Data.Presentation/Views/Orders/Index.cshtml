@@ -27,6 +27,8 @@
 
 <div class="page-actions">
     <a asp-action="Create" class="btn-primary">+ Add Order</a>
+    <a asp-controller="Customers" asp-action="Index" class="btn-secondary">View Customers</a>
+
 </div>
 
 @if (TempData["Success"] != null)

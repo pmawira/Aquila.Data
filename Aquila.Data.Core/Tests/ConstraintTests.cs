@@ -1,4 +1,5 @@
 ﻿using Aquila.Data.Core.Storage;
+using Aquila.Data.Core.Engine;
 using Aquila.Data.Core.Exceptions;
 using Xunit;
 
@@ -11,18 +12,19 @@ namespace Aquila.Data.Core.Tests
         
         public void Duplicate_Primary_Key_Is_Rejected()
         {
-            var table = new Table(
-                name: "Users",
-                primaryKey: "Id"
-            );
 
-            table.Insert(new()
+           
+            var db = new DatabaseEngine();
+            var customers = db.CreateTable("Customers", "Id");
+
+
+            customers.Insert(new()
             {
                 ["Id"] = 1
             });
 
             Assert.Throws<ConstraintViolationException>(() =>
-                table.Insert(new()
+                customers.Insert(new()
                 {
                     ["Id"] = 1
                 }));
@@ -31,23 +33,20 @@ namespace Aquila.Data.Core.Tests
         [Fact]
         public void Duplicate_Unique_Key_Is_Rejected()
         {
-            var table = new Table(
-                "Users",
-                primaryKey: "Id",
-                uniqueKeys: new[] { "Email" }
-            );
-
-            table.Insert(new()
+         
+            var db = new DatabaseEngine();
+            var customers = db.CreateTable("Users", "Id", new[] { "Name" });
+            customers.Insert(new()
             {
                 ["Id"] = 1,
-                ["Email"] = "a@test.com"
+                ["Name"] = "Peter"
             });
 
             Assert.Throws<ConstraintViolationException>(() =>
-                table.Insert(new()
+                customers.Insert(new()
                 {
                     ["Id"] = 2,
-                    ["Email"] = "a@test.com"
+                    ["Name"] = "Peter"
                 }));
         }
     }

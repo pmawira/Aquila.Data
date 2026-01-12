@@ -30,7 +30,7 @@ namespace Aquila.Data.Presentation.Controllers
                     _repo.Add(model);
 
                     TempData["Success"] = "Order created successfully.";
-                    return RedirectToAction("Index");
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (ConstraintViolationException ex)
                 {
