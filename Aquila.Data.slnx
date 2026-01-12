@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Aquila.Data.Core/Aquila.Data.Core.csproj" Id="e9192b0b-99bc-4e38-aac3-efdaabeabe2c" />
+  <Project Path="Aquila.Data.Presentation/Aquila.Data.Presentation.csproj" Id="95b5fd2c-50a4-44f3-b660-cbfe7b46cb1a" />
+  <Project Path="Aquila.Data.REPL/Aquila.Data.REPL.csproj" Id="b43f3302-7550-4eb9-865e-2450df21b9b8" />
+</Solution>

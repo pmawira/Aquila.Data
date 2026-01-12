@@ -1,0 +1,144 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #f7f8fa;
+    margin: 40px;
+}
+
+h2 {
+    margin-bottom: 16px;
+}
+
+.form-card {
+    background: white;
+    padding: 24px;
+    max-width: 420px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background: #e5e7eb;
+    color: #111;
+    padding: 8px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.alert {
+    padding: 10px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.alert-success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.data-table {
+    border-collapse: collapse;
+    margin-top: 16px;
+    width: 100%;
+    max-width: 600px;
+}
+
+    .data-table th,
+    .data-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+.empty-state {
+    margin-top: 16px;
+    color: #6b7280;
+}
+.page-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.link-action {
+    margin-right: 8px;
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.link-danger {
+    color: #b91c1c;
+    text-decoration: none;
+}
+
+    .link-danger:hover {
+        text-decoration: underline;
+    }
+

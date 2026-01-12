@@ -1,0 +1,57 @@
+﻿@model IEnumerable<CustomerViewModel>
+
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<h2>Customers</h2>
+
+<div class="page-actions">
+    <a asp-action="Create" class="btn-primary">+ Add Customer</a>
+    <a asp-controller="Orders" asp-action="Index" class="btn-secondary">View Orders</a>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+@if (!Model.Any())
+{
+    <p class="empty-state">No customers have been added yet.</p>
+}
+else
+{
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th style="width: 160px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Id</td>
+                <td>@customer.Name</td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@customer.Id"
+                       class="link-action">Edit</a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@customer.Id"
+                       class="link-danger"
+                       onclick="return confirm('Delete this customer?');">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
