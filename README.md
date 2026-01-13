@@ -34,6 +34,14 @@ Aquila.Data
 ├── Aquila.Data.REPL
 │   └── Program.cs
 │
+├── Aquila.Data.Core.Tests
+│   ├── ConstrintsTests.cs
+│   └── JoinEngineTests.cs
+│   └── TableTests.cs
+|
+├── Aquila.Data.Core.Tests
+│   ├── TableTests.cs
+│   └── JoinEngineTests.cs
 ├── Aquila.Data.Presentation (ASP.NET MVC)
 │   ├── Controllers
 │   │   ├── CustomersController.cs
